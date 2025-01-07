@@ -21,7 +21,23 @@ export const userApiSlice = apiSlice.injectEndpoints({
         }),
       }),
 
+      deleteUser: builder.mutation({
+        query: (id) => ({
+          url: `${USER_URL}/${id}`, // Use backticks instead of double quotes
+          method: "DELETE",
+          credentials: "include", // Optional: Include credentials (cookies, etc.) if required
+        }),
+      }),
+
+      UserAction: builder.mutation({
+        query: (data) => ({
+          url: `${USER_URL}/${data.id}`, // Use backticks instead of double quotes
+          method: "PUT",
+          credentials: "include", // Optional: Include credentials (cookies, etc.) if required
+        }),
+      }),
+
   }),
 });
 
-export const { useUpdateUserMutation , useGetTeamListQuery } = userApiSlice;
+export const { useUpdateUserMutation , useGetTeamListQuery, useDeleteUserMutation, useUserActionMutation } = userApiSlice;
