@@ -10,7 +10,7 @@ const firebaseConfig = {
   projectId: "tm-task-manager",
   storageBucket: "tm-task-manager.firebasestorage.app",
   messagingSenderId: "95164260701",
-  appId: "1:95164260701:web:93f0fdac0b2bf36cd648b4"
+  appId: "1:95164260701:web:93f0fdac0b2bf36cd648b4",
 };
 
 // Initialize Firebase

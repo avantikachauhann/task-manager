@@ -3,18 +3,27 @@ import { Fragment, useState } from "react";
 import { FaUser, FaUserLock } from "react-icons/fa";
 import { IoLogOutOutline } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { getInitials } from "../utils";
+import { logout } from "../redux/slices/authSlice";
+import { useLogoutMutation } from "../redux/slices/api/authApiSlice";
 
 const UserAvatar = () => {
   const [open, setOpen] = useState(false);
   const [openPassword, setOpenPassword] = useState(false);
   const { user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
-//   const navigate = useNavigate();
+  const navigate = useNavigate();
 
-  const logoutHandler = () => {
-    console.log("logout");
+  const [logoutUser] = useLogoutMutation();
+  const logoutHandler = async () => {
+    try {
+      await logoutUser().unwrap();
+      dispatch(logout())
+      navigate("/log-in")
+    } catch (error) {
+      toast.error ("Something went wrong");
+    }
   };
 
   return (

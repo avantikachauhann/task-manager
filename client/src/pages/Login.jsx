@@ -4,6 +4,13 @@ import { useNavigate } from "react-router-dom";
 import Textbox from "../components/Textbox";
 import Button from "../components/Button";
 import { useDispatch, useSelector } from "react-redux";
+import { useLoginMutation } from "../redux/slices/api/authApiSlice";
+import { setCredentials } from "../redux/slices/authSlice";
+import { toast } from "sonner";
+import Loading from "../components/Loader"; 
+
+// const Loading = () => <div>Loading...</div>;
+
 
 const Login = () => {
   const { user } = useSelector((state) => state.auth);
@@ -25,8 +32,8 @@ const Login = () => {
       dispatch(setCredentials(result));
       navigate("/");
     } catch (error) {
-    console.log(error)
-    toast.error(error?.data?.message || error.message)
+      console.log(error); 
+      toast.error(error?.data?.message || error.message);
     }
   };
 
