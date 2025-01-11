@@ -71,7 +71,7 @@ export const {
   useGetTeamListQuery,
   useDeleteUserMutation,
   useUserActionMutation,
-  getNotificationsQuery,
-  markNotiAsReadMutation,
-  changePasswordMutation,
+  useGetNotificationsQuery,
+  useMarkNotiAsReadMutation,
+  useChangePasswordMutation,
 } = userApiSlice;

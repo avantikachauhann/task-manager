@@ -50,8 +50,9 @@ const Users = () => {
       setOpenDialog(false);
       }, 500);
       } catch (error) {
-      console.log(err);
-      toast.error(err?.data?.message || err.error);
+        console.log(err);
+        toast.error(err?.data?.message || err.error);
+      }
   };
 
   const deleteClick = (id) => {
