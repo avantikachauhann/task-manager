@@ -29,11 +29,14 @@ const Tasks = () => {
 
   const [selected, setSelected] = useState(0);
   const [open, setOpen] = useState(false);
-  const [loading, setLoading] = useState(false);
 
   const status = params?.status || "";
 
-  return loading ? (
+  const {data, isLoading} = useGetAllTaskQuery({
+    
+  });
+
+  return isLoading ? (
     <div className='py-10'>
       <Loading />
     </div>
