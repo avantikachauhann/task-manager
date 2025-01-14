@@ -33,7 +33,9 @@ const Tasks = () => {
   const status = params?.status || "";
 
   const {data, isLoading} = useGetAllTaskQuery({
-    
+    strQuery: status, 
+    isTrashed: "",
+    search: "", 
   });
 
   return isLoading ? (
@@ -68,10 +70,10 @@ const Tasks = () => {
         )}
 
         {selected !== 1 ? (
-          <BoardView tasks={tasks} />
+          <BoardView tasks={data?.tasks} />
         ) : (
           <div className='w-full'>
-            <Table tasks={tasks} />
+            <Table tasks={data?.tasks} />
           </div>
         )}
       </Tabs>
